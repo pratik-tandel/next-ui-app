@@ -10,6 +10,7 @@ import { useState } from "react";
 import { Select, SelectItem } from "@nextui-org/select";
 
 import IconComponent from "./IconComponent";
+import CustomComponent from "./components/CustomComponent";
 
 import { subtitle, title } from "@/components/primitives";
 
@@ -24,6 +25,10 @@ export default function Home() {
     email: "",
     dob: parseDate("2024-12-26"),
     state: "",
+    custom: {
+      type: "",
+      search: "",
+    },
   });
 
   const handleChange = (event: any) => {
@@ -45,6 +50,14 @@ export default function Home() {
     setFormData((prevFormData) => ({
       ...prevFormData,
       state: event.target.value,
+    }));
+  };
+
+  const handleCustomChange = (value: any) => {
+    console.log(value);
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      custom: value,
     }));
   };
 
@@ -72,7 +85,7 @@ export default function Home() {
         <IconComponent color="red" name="camera" size={48} />
       </div>
 
-      <Card className="max-w-[400px]">
+      <Card className="max-w-[600px]">
         <CardHeader className="flex gap-3">
           <div className="flex flex-col">
             <p className="text-md">NextUI</p>
@@ -100,7 +113,7 @@ export default function Home() {
                 onChange={handleChange}
               />
               <DatePicker
-                className="max-w-[284px]"
+                className="max-w"
                 label="Birth date"
                 name="dob"
                 value={formData.dob}
@@ -116,6 +129,10 @@ export default function Home() {
                   <SelectItem key={state.key}>{state.label}</SelectItem>
                 ))}
               </Select>
+              <CustomComponent
+                handleChange={handleCustomChange}
+                value={formData.custom}
+              />
             </div>
           </form>
         </CardBody>
