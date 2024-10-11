@@ -1,7 +1,12 @@
 import { Input } from "@nextui-org/input";
 import { Select, SelectItem } from "@nextui-org/select";
 
-const CustomComponent = ({ value, handleChange }: any) => {
+interface CustomComponentProps {
+  value: { type: string; search: string };
+  handleChange: (value: { type: string; search: string }) => void;
+}
+
+const CustomComponent = ({ value, handleChange }: CustomComponentProps) => {
   const types = [
     { key: "type1", label: "Type 1" },
     { key: "type2", label: "Type 2" },
@@ -15,7 +20,9 @@ const CustomComponent = ({ value, handleChange }: any) => {
         label="Type"
         placeholder="Select type"
         value={value.type}
-        onChange={(event) => handleChange({ type: event.target.value, search: value.search })}
+        onChange={(event) =>
+          handleChange({ ...value, type: event.target.value })
+        }
       >
         {(type) => <SelectItem key={type.key}>{type.label}</SelectItem>}
       </Select>
@@ -26,7 +33,9 @@ const CustomComponent = ({ value, handleChange }: any) => {
         placeholder="Search here"
         type="text"
         value={value.search}
-        onChange={(event) => handleChange({ type: value.type, search: event.target.value })}
+        onChange={(event) =>
+          handleChange({ ...value, search: event.target.value })
+        }
       />
     </div>
   );

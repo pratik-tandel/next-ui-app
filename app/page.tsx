@@ -53,7 +53,7 @@ export default function Home() {
     }));
   };
 
-  const handleCustomChange = (value: any) => {
+  const handleCustomChange = (value: { type: string; search: string }) => {
     console.log(value);
     setFormData((prevFormData) => ({
       ...prevFormData,
