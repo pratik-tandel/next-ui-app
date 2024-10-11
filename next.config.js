@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    distDir: 'dist'
+    distDir: 'dist',
+    transpilePackages: ['lucide-react']
 }
 
 module.exports = nextConfig

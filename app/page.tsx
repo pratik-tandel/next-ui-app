@@ -1,4 +1,5 @@
 "use client";
+import { parseDate } from "@internationalized/date";
 import { Button } from "@nextui-org/button";
 import { Card, CardBody, CardFooter, CardHeader } from "@nextui-org/card";
 import { DatePicker } from "@nextui-org/date-picker";
@@ -6,7 +7,8 @@ import { Divider } from "@nextui-org/divider";
 import { Input } from "@nextui-org/input";
 import { Camera } from "lucide-react";
 import { useState } from "react";
-import { parseDate } from "@internationalized/date";
+
+import IconComponent from "./IconComponent";
 
 import { subtitle, title } from "@/components/primitives";
 
@@ -50,43 +52,9 @@ export default function Home() {
         </div>
       </div>
 
-      {/* <div className="flex gap-3">
-        <Link
-          isExternal
-          className={buttonStyles({
-            color: "primary",
-            radius: "full",
-            variant: "shadow",
-          })}
-          href={siteConfig.links.docs}
-        >
-          Documentation
-        </Link>
-        <Link
-          isExternal
-          className={buttonStyles({ variant: "bordered", radius: "full" })}
-          href={siteConfig.links.github}
-        >
-          <GithubIcon size={20} />
-          GitHub
-        </Link>
-      </div> */}
-
-      {/* <div className="mt-8">
-        <Snippet hideCopyButton hideSymbol variant="bordered">
-          <span>
-            Get started by editing <Code color="primary">app/page.tsx</Code>
-          </span>
-        </Snippet>
-      </div> */}
-
-      {/* <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
-        <Input label="Name" placeholder="Enter your name" type="text" />
-        <Input label="Email" placeholder="Enter your email" type="email" />
-      </div> */}
-
       <div>
         <Camera color="red" size={48} />
+        <IconComponent color="red" name="camera" size={48} />
       </div>
 
       <Card className="max-w-[400px]">
