@@ -15,6 +15,7 @@ import CustomComponent from "./components/CustomComponent";
 import { subtitle, title } from "@/components/primitives";
 
 export default function Home() {
+  const iconName = "search";
   const [states] = useState([
     { key: "gujarat", label: "Gujarat" },
     { key: "maharashtra", label: "Maharashtra" },
@@ -80,9 +81,9 @@ export default function Home() {
         </div>
       </div>
 
-      <div>
+      <div className="flex gap-4">
         <Camera color="red" size={48} />
-        <IconComponent color="red" name="camera" size={48} />
+        <IconComponent color="green" name={iconName} size={48} />
       </div>
 
       <Card className="max-w-[600px]">
