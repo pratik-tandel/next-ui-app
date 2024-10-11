@@ -7,16 +7,23 @@ import { Divider } from "@nextui-org/divider";
 import { Input } from "@nextui-org/input";
 import { Camera } from "lucide-react";
 import { useState } from "react";
+import { Select, SelectItem } from "@nextui-org/select";
 
 import IconComponent from "./IconComponent";
 
 import { subtitle, title } from "@/components/primitives";
 
 export default function Home() {
+  const [states] = useState([
+    { key: "gujarat", label: "Gujarat" },
+    { key: "maharashtra", label: "Maharashtra" },
+    { key: "rajasthan", label: "Rajasthan" },
+  ]);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     dob: parseDate("2024-12-26"),
+    state: "",
   });
 
   const handleChange = (event: any) => {
@@ -30,6 +37,14 @@ export default function Home() {
     setFormData((prevFormData) => ({
       ...prevFormData,
       dob: parseDate(`${value.year}-${value.month}-${value.day}`),
+    }));
+  };
+
+  const handleStateChange = (event: any) => {
+    console.log(event.target.value);
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      state: event.target.value,
     }));
   };
 
@@ -91,6 +106,16 @@ export default function Home() {
                 value={formData.dob}
                 onChange={handleDateChange}
               />
+              <Select
+                className="max-w-xs"
+                label="Select state"
+                value={formData.state}
+                onChange={handleStateChange}
+              >
+                {states.map((state) => (
+                  <SelectItem key={state.key}>{state.label}</SelectItem>
+                ))}
+              </Select>
             </div>
           </form>
         </CardBody>
